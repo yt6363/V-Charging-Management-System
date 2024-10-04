@@ -1,0 +1,10 @@
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (1, 'Michaelside', 18, 7);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (2, 'Timburgh', 10, 1);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (3, 'Fitzgeraldborough', 13, 12);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (4, 'Josephburgh', 5, 3);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (5, 'Lake Kathy', 19, 11);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (6, 'West Coryport', 20, 5);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (7, 'Jodyberg', 11, 8);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (8, 'Christineburgh', 6, 0);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (9, 'Millerberg', 7, 4);
+INSERT INTO ChargingStations (station_id, location, total_slots, available_slots) VALUES (10, 'Mcknightfort', 7, 2);
