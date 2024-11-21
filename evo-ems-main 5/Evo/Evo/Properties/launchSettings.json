@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Evo (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Evo (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

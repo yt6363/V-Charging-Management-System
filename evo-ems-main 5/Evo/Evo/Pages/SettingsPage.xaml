@@ -1,0 +1,119 @@
+<Page
+	x:Class="Evo.Pages.SettingsPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding RelativeSource={RelativeSource Self}}"
+	mc:Ignorable="d"
+	>
+
+  <Grid
+		Margin="{StaticResource Margin}"
+		Padding="{StaticResource Padding}"
+		Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush}"
+		ColumnSpacing="{StaticResource LgSeparation}"
+		CornerRadius="{StaticResource Radius}"
+		RowSpacing="{StaticResource LgSeparation}"
+		>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <!--  Title  -->
+    <TextBlock
+			Grid.Row="0"
+			Grid.Column="0"
+			FontSize="{StaticResource LgFontSize}"
+			Text="Live Data"
+			/>
+
+    <!--  Refresh data  -->
+    <Button
+			Grid.Row="0"
+			Grid.Column="1"
+			Width="{StaticResource ButtonWidth}"
+			HorizontalAlignment="Right"
+			Content="Update"
+			Style="{ThemeResource AccentButtonStyle}"
+			/>
+
+    <!--  Select location  -->
+    <ComboBox
+			Name="LocationComboBox"
+			Grid.Row="1"
+			Grid.Column="0"
+			Grid.ColumnSpan="2"
+			VerticalAlignment="Center"
+			HorizontalContentAlignment="Stretch"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Location"
+			ItemsSource="{x:Bind locations}"
+			SelectionChanged="LocationComboBox_SelectionChanged"
+			/>
+
+    <!--  Lower fixed charge  -->
+    <NumberBox
+			Name="LowerFixedCharge"
+			Grid.Row="2"
+			Grid.Column="0"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Lower Fixed Charge (Rupee/MW)"
+			Minimum="0"
+			PlaceholderText="Charge per unit for &lt; 50 MW"
+			/>
+
+    <!--  Higher fixed charge  -->
+    <NumberBox
+			Name="HigherFixedCharge"
+			Grid.Row="2"
+			Grid.Column="1"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Higher Fixed Charge (Rupee/MW)"
+			Minimum="0"
+			PlaceholderText="Charge per unit for &gt;= 50 MW"
+			/>
+
+    <!--  Monsoon season modifier  -->
+    <NumberBox
+			Name="SeasonalModifier"
+			Grid.Row="3"
+			Grid.Column="0"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Seasonal Modifier (Rupee/kWh)"
+			Minimum="0"
+			PlaceholderText="Moonsoon season modifier for electricity rate"
+			/>
+
+    <!--  Tax rate  -->
+    <NumberBox
+			Name="Tax"
+			Grid.Row="3"
+			Grid.Column="1"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Tax (%)"
+			Minimum="0"
+			PlaceholderText="Tax applied on final cost"
+			/>
+
+    <!--  Electricity Cost/Rate  -->
+    <NumberBox
+			Name="ElectricityRate"
+			Grid.Row="4"
+			Grid.Column="0"
+			Grid.ColumnSpan="2"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Electricity Rate (Paisa/kWh)"
+			Minimum="0"
+			PlaceholderText="Electricity Rate (paisa)"
+			/>
+  </Grid>
+</Page>

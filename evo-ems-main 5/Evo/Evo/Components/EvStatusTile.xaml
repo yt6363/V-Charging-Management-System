@@ -1,0 +1,324 @@
+<UserControl
+	x:Class="Evo.Components.EvStatusTile"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding RelativeSource={RelativeSource Self}}"
+	mc:Ignorable="d"
+	>
+
+  <Grid
+		Margin="{StaticResource Margin}"
+		Padding="{StaticResource Padding}"
+		Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+		ColumnSpacing="{StaticResource LgSeparation}"
+		CornerRadius="{StaticResource Radius}"
+		RowSpacing="{StaticResource LgSeparation}"
+		>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1.5*" />
+      <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+
+    <!--  Car selection + Car details  -->
+    <AutoSuggestBox
+			Name="EvAutoSuggestBox"
+			Grid.Row="0"
+			Grid.Column="0"
+			VerticalContentAlignment="Center"
+			FontSize="{StaticResource MdFontSize}"
+			PlaceholderText="EV Make and Model"
+			QueryIcon="Find"
+			SuggestionChosen="EvAutoSuggestBox_SuggestionChosen"
+			TextChanged="EvAutoSuggestBox_TextChanged"
+			/>
+
+    <!--  Priority and revenue  -->
+    <Grid
+			Grid.Row="0"
+			Grid.Column="1"
+			Padding="{StaticResource Padding}"
+			Background="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}"
+			CornerRadius="{StaticResource SharpRadius}"
+			>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition Width="0.3*" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+
+      <!--  Revenue  -->
+      <StackPanel Grid.Column="0" VerticalAlignment="Center">
+        <TextBlock
+					Name="RevenueTextBlock"
+					HorizontalAlignment="Center"
+					FontSize="{StaticResource LgFontSize}"
+					FontWeight="Bold"
+					Text="₹0"
+					/>
+        <TextBlock
+					HorizontalAlignment="Center"
+					FontSize="{StaticResource SmFontSize}"
+					Text="Revenue"
+					/>
+      </StackPanel>
+
+      <!--  Separation  -->
+      <AppBarSeparator Grid.Column="1" />
+
+      <!--  Priority  -->
+      <StackPanel Grid.Column="2" VerticalAlignment="Center">
+        <TextBlock
+          Name="PriorityTextBlock"
+					HorizontalAlignment="Center"
+					FontSize="{StaticResource LgFontSize}"
+					FontWeight="Bold"
+					Text="..."
+					/>
+        <TextBlock
+					HorizontalAlignment="Center"
+					FontSize="{StaticResource SmFontSize}"
+					Text="Priority"
+					/>
+      </StackPanel>
+    </Grid>
+
+    <!--  Numberplate  -->
+    <TextBox
+			Name="EvNumberplateTextBox"
+			Grid.Row="1"
+			Grid.Column="0"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Numberplate"
+			PlaceholderText="KA 00 AA 0000"
+			/>
+
+    <!--  Additional Details  -->
+    <Grid
+			Grid.Row="1"
+			Grid.RowSpan="2"
+			Grid.Column="1"
+			ColumnSpacing="{StaticResource SmSeparation}"
+			RowSpacing="{StaticResource SmSeparation}"
+			>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <!--  Charging ETC  -->
+      <TextBlock
+				Grid.Row="0"
+				Grid.Column="0"
+				FontSize="{StaticResource SmFontSize}"
+				Text="⌚ Completion in"
+				/>
+      <TextBlock
+				Name="CompletionTimeTextBlock"
+				Grid.Row="0"
+				Grid.Column="1"
+				FontSize="{StaticResource SmFontSize}"
+				FontWeight="Medium"
+				/>
+
+      <!--  Range  -->
+      <TextBlock
+				Grid.Row="1"
+				Grid.Column="0"
+				FontSize="{StaticResource SmFontSize}"
+				Text="🛣️ Range"
+				/>
+      <StackPanel
+				Grid.Row="1"
+				Grid.Column="1"
+				Orientation="Horizontal"
+				Spacing="{StaticResource SmSeparation}"
+				>
+        <TextBlock
+					Name="CurrentRangeTextBlock"
+					FontSize="{StaticResource SmFontSize}"
+					FontWeight="Medium"
+					/>
+        <TextBlock
+					Name="MaxRangeTextBlock"
+					FontSize="{StaticResource SmFontSize}"
+					FontWeight="Thin"
+					/>
+      </StackPanel>
+
+      <!--  Units charged  -->
+      <TextBlock
+				Grid.Row="2"
+				Grid.Column="0"
+				FontSize="{StaticResource SmFontSize}"
+				Text="⚡ Energy transferred"
+				/>
+      <TextBlock
+				Name="EnergyTransferredTextBlock"
+				Grid.Row="2"
+				Grid.Column="1"
+				FontSize="{StaticResource SmFontSize}"
+				FontWeight="Medium"
+				/>
+
+      <!--  Time of use  -->
+      <TextBlock
+				Grid.Row="3"
+				Grid.Column="0"
+				FontSize="{StaticResource SmFontSize}"
+				Text="⏱️ Time of use"
+				/>
+      <TextBlock
+				Name="TimeOfUseTextBlock"
+				Grid.Row="3"
+				Grid.Column="1"
+				FontSize="{StaticResource SmFontSize}"
+				FontWeight="Medium"
+				/>
+    </Grid>
+
+    <!--  State of initial charge  -->
+    <ProgressBar
+			Name="InitialChargeProgressBar"
+			Grid.Row="2"
+			Grid.Column="0"
+			/>
+    <NumberBox
+			Name="InitialChargeNumberBox"
+			Grid.Row="2"
+			Grid.Column="0"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Initial State of Charge (%)"
+			Maximum="100"
+			Minimum="0"
+			PlaceholderText="Enter state of charge here"
+			SmallChange="1"
+			SpinButtonPlacementMode="Inline"
+			ValueChanged="InitialChargeNumberBox_ValueChanged"
+			/>
+
+    <!--  State of present charge  -->
+    <ProgressBar
+			Name="PresentChargeProgressBar"
+			Grid.Row="3"
+			Grid.Column="0"
+			/>
+    <NumberBox
+			Name="PresentChargeNumberBox"
+			Grid.Row="3"
+			Grid.Column="0"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Present State of Charge (%)"
+			Maximum="100"
+			Minimum="0"
+			PlaceholderText="Enter state of charge here"
+			SmallChange="1"
+			SpinButtonPlacementMode="Inline"
+			ValueChanged="PresentChargeNumberBox_ValueChanged"
+			/>
+
+    <!--  Priority cost  -->
+    <NumberBox
+			x:Name="EvMoneyNumberBox"
+			Grid.Row="4"
+			Grid.Column="0"
+			FontSize="{StaticResource SmFontSize}"
+			Header="Additional Charges for Priority (₹/kW)"
+			Minimum="0"
+			PlaceholderText="0.00"
+			SmallChange="0.25"
+			SpinButtonPlacementMode="Inline"
+      ValueChanged="EvMoneyNumberBox_ValueChanged"
+			/>
+
+    <!--  Time of arrival and departure  -->
+    <StackPanel
+			Grid.Row="5"
+			Grid.Column="0"
+			Orientation="Horizontal"
+			Spacing="20"
+			>
+      <TimePicker
+				Name="ArrivalTimePicker"
+				FontSize="{StaticResource SmFontSize}"
+				Header="Arrival Time"
+				TimeChanged="ArrivalTimePicker_TimeChanged"
+				/>
+      <TimePicker
+				Name="DepartureTimePicker"
+				FontSize="{StaticResource SmFontSize}"
+				Header="Departure Time"
+				TimeChanged="DepartureTimePicker_TimeChanged"
+				/>
+    </StackPanel>
+
+    <!--  Ev features  -->
+    <StackPanel Grid.Row="6" Grid.Column="0">
+      <TextBlock FontSize="{StaticResource SmFontSize}" Text="EV Features" />
+      <StackPanel Orientation="Horizontal">
+        <CheckBox
+					Name="SolarRoofCheckBox"
+					Click="SolarRoofCheckBox_Click"
+					Content="Solar Roof"
+					FontSize="{StaticResource SmFontSize}"
+					/>
+        <CheckBox
+					Name="FastChargeCheckBox"
+					Click="FastChargeCheckBox_Click"
+					Content="Fast Charge"
+					FontSize="{StaticResource SmFontSize}"
+					/>
+        <CheckBox
+					Name="RapidChargeCheckBox"
+					Click="RapidChargeCheckBox_Click"
+					Content="Rapid Charge"
+					FontSize="{StaticResource SmFontSize}"
+					/>
+      </StackPanel>
+    </StackPanel>
+
+    <!--  Action buttons  -->
+    <StackPanel
+			Grid.Row="6"
+			Grid.Column="1"
+			HorizontalAlignment="Right"
+			Orientation="Horizontal"
+			Spacing="{StaticResource SmSeparation}"
+			>
+      <Button
+				Name="UpdateTimeButton"
+				Width="{StaticResource ButtonWidth}"
+				Click="UpdateTimeButton_Click"
+				Content="Update"
+				Style="{ThemeResource AccentButtonStyle}"
+				/>
+      <Button
+				Name="DiscardButton"
+				Width="{StaticResource ButtonWidth}"
+				Content="Discard"
+				/>
+      <Button
+				Name="ArchiveButton"
+				Width="{StaticResource ButtonWidth}"
+				Content="Archive"
+				/>
+    </StackPanel>
+  </Grid>
+</UserControl>
